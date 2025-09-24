@@ -20,7 +20,7 @@ public class KasirRestoran {
     // Fungsi utama untuk menjalankan program
     public static void main(String[] args) {
         System.out.println("==================================================");
-        System.out.println("     SELAMAT DATANG DI RESTORAN SEDERHANA     ");
+        System.out.println("        SELAMAT DATANG DI RESTORAN MICBOY     ");
         System.out.println("==================================================");
 
         tampilkanMenu();
