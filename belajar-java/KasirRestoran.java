@@ -50,7 +50,7 @@ public class KasirRestoran {
         return sb.toString();
     }
 
-    // Fungsi untuk menampilkan semua menu yang tersedia dengan format rapi
+    // Fungsi untuk menampilkan semua menu yang tersedia dengan format
     public static void tampilkanMenu() {
         System.out.println("\n------------------- MENU KAMI --------------------");
         
@@ -106,7 +106,7 @@ public class KasirRestoran {
         }
     }
 
-    // Fungsi untuk menghitung total dan mencetak struk pembayaran dengan format rapi
+    // Fungsi untuk menghitung total dan mencetak struk pembayaran dengan format
     public static void cetakStruk() {
         System.out.println("\n\n=============== STRUK PEMBAYARAN ===============");
         System.out.println("Item Dipesan:");
