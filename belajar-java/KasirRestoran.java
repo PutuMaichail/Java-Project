@@ -145,7 +145,7 @@ public class KasirRestoran {
         double totalAkhir = subtotalSetelahDiskon + pajak;
         System.out.println("--------------------------------------------------");
         System.out.println(padRight("TOTAL BAYAR", 25) + ": Rp " + totalAkhir);
-        System.out.println("==================================================");
+        System.out.println("==================================================\n");
     }
 }
 
