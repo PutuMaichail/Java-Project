@@ -19,9 +19,9 @@ public class KasirRestoran {
 
     // Fungsi utama untuk menjalankan program
     public static void main(String[] args) {
-        System.out.println("=============================================");
-        System.out.println("   SELAMAT DATANG DI RESTORAN SEDERHANA    ");
-        System.out.println("=============================================");
+        System.out.println("==================================================");
+        System.out.println("     SELAMAT DATANG DI RESTORAN SEDERHANA     ");
+        System.out.println("==================================================");
 
         tampilkanMenu();
         terimaPesanan();
@@ -33,21 +33,41 @@ public class KasirRestoran {
             System.out.println("\nTidak ada pesanan yang dibuat.");
         }
         
-        System.out.println("\n=============================================");
-        System.out.println("          TERIMA KASIH ATAS KUNJUNGANNYA         ");
-        System.out.println("=============================================");
+        System.out.println("\n==================================================");
+        System.out.println("        TERIMA KASIH ATAS KUNJUNGANNYA        ");
+        System.out.println("==================================================");
         
         // Menutup scanner setelah selesai digunakan
         scanner.close();
     }
 
-    // Fungsi untuk menampilkan semua menu yang tersedia
-    public static void tampilkanMenu() {
-        System.out.println("\n----------- MENU KAMI -----------");
-        for (int i = 0; i < daftarMenu.length; i++) {
-            System.out.println((i + 1) + ". " + daftarMenu[i] + "\t | Rp " + hargaMenu[i]);
+    // Fungsi untuk membuat teks rata kanan dengan menambahkan spasi
+    private static String padRight(String text, int length) {
+        StringBuilder sb = new StringBuilder(text);
+        while (sb.length() < length) {
+            sb.append(" ");
         }
-        System.out.println("---------------------------------");
+        return sb.toString();
+    }
+
+    // Fungsi untuk menampilkan semua menu yang tersedia dengan format rapi
+    public static void tampilkanMenu() {
+        System.out.println("\n------------------- MENU KAMI --------------------");
+        
+        // Cari nama menu terpanjang untuk menentukan lebar kolom
+        int panjangMenuTerpanjang = 0;
+        for (String nama : daftarMenu) {
+            if (nama.length() > panjangMenuTerpanjang) {
+                panjangMenuTerpanjang = nama.length();
+            }
+        }
+
+        for (int i = 0; i < daftarMenu.length; i++) {
+            // Gunakan fungsi padRight untuk merapikan nama menu
+            String menuRapi = padRight(daftarMenu[i], panjangMenuTerpanjang);
+            System.out.println((i + 1) + ". " + menuRapi + " | Rp " + hargaMenu[i]);
+        }
+        System.out.println("--------------------------------------------------");
     }
 
     // Fungsi untuk memproses input pesanan dari pengguna
@@ -86,7 +106,7 @@ public class KasirRestoran {
         }
     }
 
-    // Fungsi untuk menghitung total dan mencetak struk pembayaran
+    // Fungsi untuk menghitung total dan mencetak struk pembayaran dengan format rapi
     public static void cetakStruk() {
         System.out.println("\n\n=============== STRUK PEMBAYARAN ===============");
         System.out.println("Item Dipesan:");
@@ -100,29 +120,32 @@ public class KasirRestoran {
             double hargaItemTotal = hargaMenu[indeksItem] * kuantitas;
             subtotal += hargaItemTotal;
 
-            System.out.println("- " + daftarMenu[indeksItem] + " (" + kuantitas + "x) \t = Rp " + hargaItemTotal);
+            String detailItem = "- " + daftarMenu[indeksItem] + " (" + kuantitas + "x)";
+            String itemRapi = padRight(detailItem, 35); // Atur lebar kolom item
+            System.out.println(itemRapi + " = Rp " + hargaItemTotal);
         }
         
-        System.out.println("----------------------------------------------");
-        System.out.println("Subtotal \t\t: Rp " + subtotal);
+        System.out.println("--------------------------------------------------");
+        // Gunakan padRight untuk merapikan bagian total
+        System.out.println(padRight("Subtotal", 25) + ": Rp " + subtotal);
 
         // Hitung diskon jika pembelian di atas 300.000
         double diskon = 0;
         if (subtotal > 300000) {
             diskon = subtotal * 0.03; 
-            System.out.println("Diskon (3%) \t\t: Rp " + diskon);
+            System.out.println(padRight("Diskon (3%)", 25) + ": Rp " + diskon);
         }
 
         // Hitung pajak 11% dari harga setelah diskon
         double subtotalSetelahDiskon = subtotal - diskon;
         double pajak = subtotalSetelahDiskon * 0.11; 
-        System.out.println("Pajak (11%) \t\t: Rp " + pajak);
+        System.out.println(padRight("Pajak (11%)", 25) + ": Rp " + pajak);
 
         // Hitung total akhir yang harus dibayar
         double totalAkhir = subtotalSetelahDiskon + pajak;
-        System.out.println("----------------------------------------------");
-        System.out.println("TOTAL BAYAR \t\t: Rp " + totalAkhir);
-        System.out.println("==============================================");
+        System.out.println("--------------------------------------------------");
+        System.out.println(padRight("TOTAL BAYAR", 25) + ": Rp " + totalAkhir);
+        System.out.println("==================================================");
     }
 }
 
