@@ -35,7 +35,7 @@ public class KasirRestoran {
         
         System.out.println("\n==================================================");
         System.out.println("        TERIMA KASIH ATAS KUNJUNGANNYA        ");
-        System.out.println("==================================================");
+        System.out.println("==================================================\n");
         
         // Menutup scanner setelah selesai digunakan
         scanner.close();
@@ -145,7 +145,7 @@ public class KasirRestoran {
         double totalAkhir = subtotalSetelahDiskon + pajak;
         System.out.println("--------------------------------------------------");
         System.out.println(padRight("TOTAL BAYAR", 25) + ": Rp " + totalAkhir);
-        System.out.println("==================================================\n");
+        System.out.println("==================================================");
     }
 }
 
